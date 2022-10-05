@@ -10,7 +10,7 @@ module Hanami
       #
       # @since 0.7.0
       module Types
-        include Dry::Types.module
+        include Dry::Types()
 
         # Types for schema definitions
         #
