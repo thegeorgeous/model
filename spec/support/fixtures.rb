@@ -43,7 +43,7 @@ end
 
 class Warehouse < Hanami::Entity
   attributes do
-    attribute :id,   Types::Int
+    attribute :id,   Types::Integer
     attribute :name, Types::String
     attribute :code, Types::String.constrained(format: /\Awh\-/)
   end
@@ -51,9 +51,9 @@ end
 
 class Account < Hanami::Entity
   attributes do
-    attribute :id,         Types::Strict::Int
+    attribute :id,         Types::Strict::Integer
     attribute :name,       Types::String
-    attribute :codes,      Types::Collection(Types::Coercible::Int)
+    attribute :codes,      Types::Collection(Types::Coercible::Integer)
     attribute :owner,      Types::Entity(User)
     attribute :users,      Types::Collection(User)
     attribute :email,      Types::String.constrained(format: /@/)
@@ -63,11 +63,11 @@ end
 
 class PageVisit < Hanami::Entity
   attributes do
-    attribute :id,        Types::Strict::Int
+    attribute :id,        Types::Strict::Integer
     attribute :start,     Types::DateTime
     attribute :end,       Types::DateTime
     attribute :visitor,   Types::Hash
-    attribute :page_info, Types::Hash.symbolized(
+    attribute :page_info, Types::Hash.schema(
       name: Types::Coercible::String,
       scroll_depth: Types::Coercible::Float,
       meta: Types::Hash
@@ -77,7 +77,7 @@ end
 
 class Person < Hanami::Entity
   attributes :strict do
-    attribute :id,   Types::Strict::Int
+    attribute :id,   Types::Strict::Integer
     attribute :name, Types::Strict::String
   end
 end
@@ -363,7 +363,7 @@ end
 
 class ColorRepository < Hanami::Repository
   schema do
-    attribute :id,         Hanami::Model::Sql::Types::Int
+    attribute :id,         Hanami::Model::Sql::Types::Integer
     attribute :name,       Hanami::Model::Sql::Types::String
     attribute :created_at, Hanami::Model::Sql::Types::DateTime
     attribute :updated_at, Hanami::Model::Sql::Types::DateTime

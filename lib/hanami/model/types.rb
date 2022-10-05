@@ -75,7 +75,7 @@ module Hanami
         #   user.name  # => "MG"
         def Collection(type)
           type = Schema::CoercibleType.new(type) unless type.is_a?(Dry::Types::Definition)
-          Types::Array.member(type)
+          Types::Array.of(type)
         end
       end
 
@@ -87,7 +87,7 @@ module Hanami
         #
         # @since 0.7.0
         # @api private
-        class CoercibleType < Dry::Types::Definition
+        class CoercibleType < Dry::Types::Nominal
           # Coerce given value into the wrapped object type
           #
           # @param value [Object] the value
